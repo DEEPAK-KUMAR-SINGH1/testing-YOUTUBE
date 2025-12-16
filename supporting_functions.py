@@ -24,7 +24,7 @@ MISTRAL_API_KEY = st.secrets["MISTRAL_API_KEY"]
 
 
 
-load_dotenv()
+#load_dotenv()
 
 
 
@@ -197,3 +197,4 @@ def rag_answer(question, vectorstore):
 
 
     return response.content
+
