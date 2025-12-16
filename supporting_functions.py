@@ -22,7 +22,12 @@ from langchain_core.prompts import ChatPromptTemplate
 
 #load_dotenv()
 
-API_KEY = st.secrets["MISTRAL_API_KEY"]
+#API_KEY = st.secrets["MISTRAL_API_KEY"]
+
+import os
+
+os.environ["MISTRAL_API_KEY"] = st.secrets["MISTRAL_API_KEY"]
+
 
 
 # Function to extract video ID from a YouTube URL (Helper Function)
@@ -59,7 +64,6 @@ def get_transcript(video_id, language):
 
 llm= ChatMistralAI(
     model="ministral-8b-2512",
-    api_key = API_KEY,
     temperature=0.2
 )
 
@@ -194,5 +198,6 @@ def rag_answer(question, vectorstore):
     response= chain.invoke({"context":context_text,"question":question})
 
     return response.content
+
 
 
